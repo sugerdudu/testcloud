@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: userService
+  http:
+    encoding:
+      charset: utf-8
+      enabled: true
+      force: true
+
+server:
+  port: 8096
+  tomcat:
+    uri-encoding: UTF-8
+
+####################
+##  分布式       ###
+###################
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://${spring.cloud.client.ipAddress}:${eureka.prot:8071}/eureka
+
+
+####################
+#####       Feign ##
+####################
+feign:
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false
+
+#######################
+##          项目监控  ##
+#######################
+management:
+  security:
+    enabled: false
+
+##########################
+##  日志打印             ##
+##########################
+logging:
+  level:
+    #org.mybatis : DEBUG
+    #com.ibatis.common.jdbc.SimpleDataSource : DEBUG
+    #com.ibatis.common.jdbc.ScriptRunner : DEBUG
+    #com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate : DEBUG
+    #Java.sql.Connection : DEBUG
+    #java.sql.Statement : DEBUG
+    #java.sql.PreparedStatement : DEBUG
+    #tk.mybatis : DEBUG
+    com.sixi.oaservice : DEBUG

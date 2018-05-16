@@ -1,0 +1,48 @@
+dbconfig:
+  oamysql:
+    driver: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.0.8:2506/oa?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    databaseName: oa
+    username: root
+    password: 123.abc.X
+
+  oasqlserver:
+    driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://192.168.2.79:1433;DatabaseName=OA20160401
+    databaseName: OA20160401
+    username: OA20151231
+    password: hg123.XX
+
+  dyysqlserver:
+    driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://192.168.2.79:1433;DatabaseName=dywDB20160114
+    databaseName: dywDB20160114
+    username: OA20151231
+    password: hg123.XX
+
+  alidatasqlserver:
+    driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://192.168.2.79:1433;DatabaseName=alidata
+    databaseName: alidata
+    username: OA20151231
+    password: hg123.XX
+
+  oapg:
+    driver: org.postgresql.Driver
+    url: jdbc:postgresql://192.168.2.8:21532/sixioa
+    databaseName: sixioa
+    username: testuser1
+    password: 123456X
+
+  cwpg:
+    driver: org.postgresql.Driver
+    url: jdbc:postgresql://192.168.2.8:21532/sixicw
+    databaseName: sixicw
+    username: testuser1
+    password: 123456X
+
+  cwmysql:
+    driver: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.0.8:2506/cw?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 123.abc.X

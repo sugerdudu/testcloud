@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sixi.oaservice.userservice.mapper.oasqlserver.ManageMapper">
+
+    <select id="checkOutNameAndPassword" resultType="com.sixi.oaservice.userservice.domain.dto.EmployeeResultDto">
+      SELECT
+          id AS userId,
+          admin AS class1Id,
+          class2 AS class2Id
+      FROM
+          manage
+      WHERE
+          username = #{userName}
+          AND pswd = #{password}
+    </select>
+
+</mapper>

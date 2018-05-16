@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sixi.oaservice.userservice.mapper.oapg.SyncManageMapper">
+  <resultMap id="BaseResultMap" type="com.sixi.oaservice.userservice.domain.model.oapg.SyncManage">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="class1" jdbcType="INTEGER" property="class1" />
+    <result column="class2" jdbcType="INTEGER" property="class2" />
+    <result column="place" jdbcType="INTEGER" property="place" />
+    <result column="ischecked" jdbcType="INTEGER" property="ischecked" />
+    <result column="fname" jdbcType="VARCHAR" property="fname" />
+    <result column="photo" jdbcType="VARCHAR" property="photo" />
+  </resultMap>
+  <cache type="org.mybatis.caches.ehcache.EhcacheCache">
+    <!--
+      WARNING - @mbg.generated
+    -->
+  </cache>
+
+  <select id="selectFuncListByUserId" resultType="com.sixi.feignservice.user.model.result.FunctionInfo">
+    select
+      m.id AS userId,
+      m.username AS userName,
+      f.code,
+      f.name,
+      f.url,
+      ddmethod.name AS methodName,
+      ddmethod.eng_name AS methodEngName,
+      ddmethod.code AS methodCode,
+      ddtype.code AS functionTypeCode,
+      ddtype.name AS functionTypeName
+    from
+      sync_manage m
+      left join users.manage_role_relation mrr on m.id = mrr.manage_id
+      left join users.role r on mrr.role_id = r.id
+      left join users.role_function_relation rfr on r.id = rfr.role_id
+      left join users.function f on f.id = rfr.function_id
+      left join system.data_dic ddtype on ddtype.id = f.function_type
+      left join system.data_dic ddmethod on ddmethod.id = f.method
+    where
+      m.id = #{loginUser}
+  </select>
+
+</mapper>

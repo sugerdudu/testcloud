@@ -1,0 +1,64 @@
+spring:
+  application:
+    name: authService
+  redis:
+    host: 192.168.0.8
+    port: 16379
+    password: sxx.123
+    ##专门存储token
+    database: 15
+    pool:
+      max-active: 20
+      max-idle: 30
+      max-wait: -1
+      min-idle: 0
+
+  #datasource:
+    #name: OA20160401
+    #driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    ##driver-class-name: com.mysql.cj.jdbc.Driver
+    #url: jdbc:sqlserver://192.168.2.79:1433;DatabaseName=OA20160401
+    #url: jdbc:mysql://localhost:3306/ceshi?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    #username: hysa
+    #username: root
+    #password: sixi123.X
+    #password: 5784461
+  session:
+    store-type: redis
+
+server:
+  port: 8091
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://${spring.cloud.client.ipAddress}:${eureka.port:8071}/eureka
+
+
+oa:
+  token:
+    ##客户信息标志投
+    client-info: X-OA-ClientId
+
+logging:
+  level:
+    org.springframework: debug
+
+sixi:
+  security:
+    oauth2:
+      jwt-secret: sixi-oa-!@#$
+      token-type: jwt
+    client:
+      client-id: ww
+      client-secret: 5
+      grand-type: password
+      scope: all
+      base64ClientInfo: Basic d3c6NQ==
+    token:
+      access-token-seconds: 500
+      refresh-token-seconds: 1000
+      headerName: Authorization
+      userInfo: X-OA-UserId

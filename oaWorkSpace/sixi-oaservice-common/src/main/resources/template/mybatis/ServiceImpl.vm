@@ -1,0 +1,21 @@
+package ${packageName}.service.${layer}.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import ${packageName}.service.${layer}.${model}Service;
+import ${packageName}.mapper.${dataSourcePackageName}.${schema}.${model}Mapper;
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * ${modelname}Service实现层
+ * @author ${autor} create on ${nowtime}
+ */
+@Service
+@Transactional(transactionManager = "${transaction}" , rollbackFor = Exception.class)
+@Slf4j
+public class ${model}ServiceImpl implements ${model}Service{
+
+    @Autowired
+    private ${model}Mapper ${mapper}Mapper;
+}

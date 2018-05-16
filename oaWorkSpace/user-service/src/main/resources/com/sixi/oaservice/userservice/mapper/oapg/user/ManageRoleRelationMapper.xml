@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sixi.oaservice.userservice.mapper.oapg.user.ManageRoleRelationMapper">
+  <resultMap id="BaseResultMap" type="com.sixi.oaservice.userservice.domain.model.oapg.ManageRoleRelation">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="manage_id" jdbcType="INTEGER" property="manageId" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify" />
+    <result column="gmt_add_user" jdbcType="INTEGER" property="gmtAddUser" />
+    <result column="gmt_modify_user" jdbcType="INTEGER" property="gmtModifyUser" />
+  </resultMap>
+  <cache type="org.mybatis.caches.ehcache.EhcacheCache">
+    <!--
+      WARNING - @mbg.generated
+    -->
+  </cache>
+
+  <insert id="insertBatch">
+    insert into "users".manage_role_relation (manage_id, role_id, gmt_add_user, gmt_modify_user) values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.manageId},#{item.roleId},#{item.addUser},#{item.modifyUser})
+    </foreach>
+  </insert>
+</mapper>

@@ -1,0 +1,9 @@
+package ${packageName}.service.${layer};
+
+/**
+ * ${modelname}Service接口
+ * @author ${autor} create on ${nowtime}
+ */
+public interface ${model}Service{
+
+}

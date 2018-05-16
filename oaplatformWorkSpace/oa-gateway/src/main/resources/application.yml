@@ -1,0 +1,27 @@
+###########################
+##  token个人信息配置     ##
+##########################
+oa:
+  token:
+    user-info: X-OA-UserId
+
+gate:
+  ignore:
+    startWith: /authservice
+
+sixi:
+  security:
+    oauth2:
+      jwt-secret: sixi-oa-!@#$
+      token-type: jwt
+    client:
+      client-id: ww
+      client-secret: 5
+      grand-type: password
+      scope: all
+      base64ClientInfo: Basic d3c6NQ==
+    token:
+      access-token-seconds: 500
+      refresh-token-seconds: 1000
+      headerName: Authorization
+      userInfo: X-OA-UserId
